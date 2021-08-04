@@ -2,10 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Grid from './Components/Grid';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+      <Switch>
+      <Route path="/more" render={(props) => <Grid {...props} />} />
+      <Route path="/" render={(props) => <App {...props} />} />
+      </Switch>
+  </BrowserRouter>,
+  
   document.getElementById('root')
 );
 

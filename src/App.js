@@ -73,7 +73,9 @@ const App = () => (
         </Space>
       </Form.Item>
     </Form> */}
+    <Button href="/more">More</Button>
     <Slideshow/>
+    
   </>
 );
 

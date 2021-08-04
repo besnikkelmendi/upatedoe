@@ -16,13 +16,15 @@ const server = "https://oeserver.herokuapp.com";
 function Slideshow() {
 
 const [keys, setKeys] = React.useState([]);
+const [timestamps, setTimestamps] = React.useState([]);
 
 useEffect (() => {
     console.log("Hello")
     axios.get(server+'/api/v1/images')
     .then(res => {
       console.log(res)
-      setKeys(res.data.keys)
+      setKeys(res.data.keys);
+      setTimestamps(res.data.timestamps);
     })
     .catch(err => {
       console.log(err)
@@ -33,18 +35,21 @@ return(
 
     <>
     
-  <Carousel autoplay>
+  <Carousel autoplay={true}>
     <div className="center">
-      {/* <h3 style={contentStyle}>1</h3> */}
-      <img src={server+'/api/v1/image/' + keys[0]} alt="Image 1" className="center"></img>
+      {/* <h4 style={contentStyle}>1<h4> */}
+      <h4 className="center">{'Time: ' + moment(timestamps[0]).format('HH:mm:ss') + ' Date: ' + moment(timestamps[0]).format('Do of MMM YYYY')}</h4>
+      <img src={server+'/api/v1/image/' + keys[0]} alt="1" className="center"></img>
     </div>
     <div>
-      {/* <h3 style={contentStyle}>2</h3> */}
-      <img src={server+'/api/v1/image/' + keys[1]} alt="Image 2" className="center"></img>
+      {/* <h4 style={contentStyle}>2<h4> */}
+      <h4 className="center">{'Time: ' + moment(timestamps[1]).format('HH:mm:ss') + ' Date: ' + moment(timestamps[1]).format('Do of MMM YYYY')}</h4>
+      <img src={server+'/api/v1/image/' + keys[1]} alt="2" className="center"></img>
     </div>
     <div>
-      {/* <h3 style={contentStyle}>3</h3> */}
-      <img src={server+'/api/v1/image/' + keys[2]} alt="Image 3" className="center"></img>
+      {/* <h4 style={contentStyle}>3<h4> */}
+      <h4 className="center">{'Time: ' + moment(timestamps[2]).format('HH:mm:ss') + ' Date: ' + moment(timestamps[2]).format('Do of MMM YYYY')}</h4>
+      <img src={server+'/api/v1/image/' + keys[2]} alt="3" className="center"></img>
     </div>
   </Carousel>
   </>
