@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Carousel } from 'antd';
+import { Carousel, Image, Row, Col } from 'antd';
 import moment from 'moment';
 import axios from 'axios';
 import "./Slideshow.css";
@@ -34,16 +34,16 @@ useEffect (() => {
 
 return(
 
-    <>
+    <Row>
     {
         keys.map((key,index)=>(
-            <div className="center">
-            <h4 className="center">{'Time: ' + moment(timestamps[index]).format('HH:mm:ss') + ' Date: ' + moment(timestamps[index]).format('Do of MMM YYYY')}</h4>
-            <img src={server+'/api/v1/image/' + key} alt={index} className="center"></img>
-            </div>
+            <Col span={12} className="center">
+            <h5 className="center" >{'Time: ' + moment(timestamps[index]).format('HH:mm:ss') + '\n Date: ' + moment(timestamps[index]).format('Do of MMM YYYY')}</h5>
+            <Image width={ window.screen.availWidth/2} src={server+'/api/v1/image/' + key} alt={index} />
+            </Col>
         ))
     }
-  </>
+    </Row>
 )
 }
 
