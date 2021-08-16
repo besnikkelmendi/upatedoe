@@ -11,7 +11,7 @@ const contentStyle = {
     background: '#364d79',
 };
 
-const server = "http://localhost:8080";
+const server = "https://oeserver.herokuapp.com";
 
 function Slideshow(props) {
 
