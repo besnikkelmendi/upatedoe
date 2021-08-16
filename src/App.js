@@ -18,7 +18,16 @@ import './App.less';
 const { Option } = Select;
 const { Title } = Typography;
 
-const App = () => (
+
+
+const App = () => {
+  const handleChange=(value)=>{
+    setFolder(value);
+    console.log(folder);
+  }
+  const [folder, setFolder] = React.useState("98:CD:AC:7B:97:20");
+
+  return(
   <>
     {/* <section style={{ textAlign: 'center', marginTop: 48, marginBottom: 40 }}>
       <Space align="start">
@@ -74,9 +83,17 @@ const App = () => (
       </Form.Item>
     </Form> */}
     <Button href="/more">More</Button>
-    <Slideshow/>
+    <Select placeholder="Select a mac address"  style={{ width: 170 }} onChange={handleChange}>
+      <option value="98:CD:AC:7B:97:20">98:CD:AC:7B:97:20</option>
+      <option value="08:3A:F2:47:3B:E0">08:3A:F2:47:3B:E0</option>
+      <option value="24:6F:28:78:16:E8">24:6F:28:78:16:E8</option>
+      <option value="7C:9E:BD:FB:F8:B8">7C:9E:BD:FB:F8:B8</option>
+      <option value="9C:9C:1F:1D:3B:20">9C:9C:1F:1D:3B:20</option>
+      <option value="9C:9C:1F:1D:3C:D4">9C:9C:1F:1D:3C:D4</option>
+    </Select>
+    <Slideshow folder={folder}/>
     
-  </>
-);
+  </>)
+};
 
 export default App;
