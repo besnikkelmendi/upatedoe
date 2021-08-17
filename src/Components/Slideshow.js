@@ -11,16 +11,16 @@ const contentStyle = {
     background: '#364d79',
 };
 
-const server = "https://oeserver.herokuapp.com";
+const server = "http://localhost:8080";
 
 function Slideshow(props) {
 
 const [keys, setKeys] = React.useState([]);
 const [timestamps, setTimestamps] = React.useState([]);
-
-useEffect (() => {
+const [folder, setFolder] = React.useState(props.folder);
+useEffect (async() => {
     console.log("Hello")
-    axios.get(server+'/api/v1/images/'+props.folder)
+    await axios.get(server+'/api/v1/images/'+props.folder)
     .then(res => {
       console.log(res)
       setKeys(res.data.keys);
@@ -29,7 +29,7 @@ useEffect (() => {
     .catch(err => {
       console.log(err)
     })
-},[]);
+},[folder]);
 
 return(
 

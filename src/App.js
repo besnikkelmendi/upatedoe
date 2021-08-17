@@ -14,19 +14,23 @@ import {
   Divider,
 } from 'antd';
 import './App.less';
+import { useDispatch, useSelector } from "react-redux";
+import { selectDeviceAddress, setDeviceAddress } from './Features/deviceSlice';
 
 const { Option } = Select;
 const { Title } = Typography;
 
 
 
-const App = () => {
+function App (){
+
+  const [folder, setFolder] = React.useState("98:CD:AC:7B:97:20");
+
   const handleChange=(value)=>{
     setFolder(value);
     console.log(folder);
   }
-  const [folder, setFolder] = React.useState("98:CD:AC:7B:97:20");
-
+  
   return(
   <>
     {/* <section style={{ textAlign: 'center', marginTop: 48, marginBottom: 40 }}>
@@ -90,6 +94,8 @@ const App = () => {
       <option value="7C:9E:BD:FB:F8:B8">7C:9E:BD:FB:F8:B8</option>
       <option value="9C:9C:1F:1D:3B:20">9C:9C:1F:1D:3B:20</option>
       <option value="9C:9C:1F:1D:3C:D4">9C:9C:1F:1D:3C:D4</option>
+      <option value="Web">Web</option>
+      <option value="Ovens">Ovens</option>
     </Select>
     <Slideshow folder={folder}/>
     

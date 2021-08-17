@@ -6,13 +6,23 @@ import Grid from './Components/Grid';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
+import {store, persister} from "./store.js"
+import { Provider } from "react-redux";
+import {PersistGate} from "redux-persist/lib/integration/react";
+
 ReactDOM.render(
+  <Provider store = {store}>
+    <PersistGate loading={null} persistor={persister}>
   <BrowserRouter>
       <Switch>
-      <Route path="/more" render={(props) => <Grid {...props} />} />
-      <Route path="/" render={(props) => <App {...props} />} />
+      <Route path="/?folder=:folder" render={(props) => <Grid {...props} />} />
+      <Route path="/" render={(props) => <Grid {...props} />} />
+
+      {/* <Route path="/" render={(props) => <App {...props} />} /> */}
       </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </PersistGate>
+  </Provider>,
   
   document.getElementById('root')
 );
